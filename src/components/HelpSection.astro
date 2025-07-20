@@ -256,11 +256,8 @@ function getColorClasses(color: string) {
     // Show loading state
     document.getElementById('loading').classList.remove('hidden');
 
-    // Simulate loading time
-    setTimeout(() => {
-      // Navigate to the resource page
-      window.location.href = `/${selectedHelpType}/${audience}`;
-    }, 1000);
+    // Navigate to the resource page
+    window.location.href = `/${selectedHelpType}/${audience}`;
   }
 
   // Helper function to get available audiences (clientside version)
