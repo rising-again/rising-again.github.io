@@ -33,10 +33,10 @@ const manifest = loadManifest();
 const articles = getMatchingArticles(manifest, topic!, audience!);
 
 // If only one article, redirect to it directly
-if (articles.length === 1) {
-  const articleSlug = slugify(articles[0].title);
-  return Astro.redirect(`/${topic}/${audience}/${articleSlug}`);
-}
+// if (articles.length === 1) {
+//   const articleSlug = slugify(articles[0].title);
+//   return Astro.redirect(`/${topic}/${audience}/${articleSlug}`);
+// }
 
 // If no articles found, return 404
 if (articles.length === 0) {
