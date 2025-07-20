@@ -1,0 +1,111 @@
+[
+  {
+    "title": "Veterans Housing Assistance Program",
+    "description": "Comprehensive support and resources to help veterans secure stable, affordable housing with access to specialized programs and benefits.",
+    "audience": ["veteran", "senior"],
+    "topic": "housing",
+    "contact": {
+      "phone": "1-800-827-1000",
+      "email": "housing@va.gov",
+      "location": "810 Vermont Ave NW, Washington, DC 20420"
+    },
+    "truths": [
+      "Veterans are entitled to VA housing benefits regardless of income level",
+      "Housing vouchers can be used nationwide in participating properties",
+      "Emergency housing assistance is available 24/7 for homeless veterans"
+    ],
+    "myths": [
+      "You must be unemployed to qualify for housing assistance programs",
+      "VA housing loans are only available for first-time homebuyers",
+      "Housing vouchers expire after one year and cannot be renewed"
+    ],
+    "article": "src/data/resources/veterans_housing_guide.txt"
+  },
+  {
+    "title": "Emergency Food Bank Network",
+    "description": "Access to fresh groceries, prepared meals, and nutrition assistance programs for individuals and families facing food insecurity.",
+    "audience": ["veteran", "senior", "other"],
+    "topic": "food",
+    "contact": {
+      "phone": "1-555-FOOD-HELP",
+      "email": "help@foodbank.org",
+      "location": "123 Community Drive, Your City, ST 12345"
+    },
+    "truths": [
+      "Food assistance is available regardless of immigration status",
+      "SNAP benefits can be used at farmers markets",
+      "Emergency food boxes are available within 24 hours"
+    ],
+    "myths": [
+      "You must have children to qualify for food assistance",
+      "Food banks are only for homeless people",
+      "SNAP benefits can only be used for basic groceries"
+    ],
+    "article": "src/data/resources/food_assistance_guide.txt"
+  },
+    {
+    "title": "Emergency2 Food Bank Network",
+    "description": "Access to fresh groceries, prepared meals, and nutrition assistance programs for individuals and families facing food insecurity.",
+    "audience": ["veteran", "senior", "other"],
+    "topic": "food",
+    "contact": {
+      "phone": "1-555-FOOD-HELP",
+      "email": "help@foodbank.org",
+      "location": "123 Community Drive, Your City, ST 12345"
+    },
+    "truths": [
+      "Food assistance is available regardless of immigration status",
+      "SNAP benefits can be used at farmers markets",
+      "Emergency food boxes are available within 24 hours"
+    ],
+    "myths": [
+      "You must have children to qualify for food assistance",
+      "Food banks are only for homeless people",
+      "SNAP benefits can only be used for basic groceries"
+    ],
+    "article": "src/data/resources/food_assistance_guide.txt"
+  },
+  {
+    "title": "Senior Healthcare Access Program",
+    "description": "Specialized healthcare services and prescription assistance for seniors 65 and older, including Medicare navigation and preventive care.",
+    "audience": ["senior"],
+    "topic": "healthcare",
+    "contact": {
+      "phone": "1-800-MEDICARE",
+      "email": "seniors@healthaccess.org"
+    },
+    "truths": [
+      "Medicare covers annual wellness visits at no cost",
+      "Prescription assistance programs can reduce medication costs by 80%",
+      "Telehealth services are covered by Medicare"
+    ],
+    "myths": [
+      "Medicare covers all medical expenses after age 65",
+      "You must choose Medicare Advantage over traditional Medicare",
+      "Dental care is fully covered by Medicare"
+    ],
+    "article": "src/data/resources/senior_healthcare_guide.txt"
+  },
+  {
+    "title": "Job Training and Placement Services",
+    "description": "Career development, skills training, and job placement assistance for veterans transitioning to civilian employment.",
+    "audience": ["veteran"],
+    "topic": "employment",
+    "contact": {
+      "phone": "1-855-VET-JOBS",
+      "email": "careers@vetjobs.gov",
+      "location": "456 Employment Center, Career City, ST 67890"
+    },
+    "truths": [
+      "Veterans receive hiring preference for federal positions",
+      "Free job training programs last up to 24 months",
+      "Career counseling services include resume and interview coaching"
+    ],
+    "myths": [
+      "Military experience doesn't translate to civilian jobs",
+      "Veterans preference only applies to government jobs",
+      "Job training programs require upfront payment"
+    ],
+    "article": "src/data/resources/veteran_employment_guide.txt"
+  }
+]

@@ -1,0 +1,42 @@
+---
+// src/pages/[topic]/index.astro
+import ResourceList from "../../components/ResourceList.astro";
+import { loadManifest, getAvailableTopics } from "../../utils/manifest";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const manifest = loadManifest();
+  const availableTopics = getAvailableTopics(manifest);
+
+  return availableTopics.map(topic => ({
+    params: { topic }
+  }));
+};
+
+const { topic } = Astro.params;
+
+// Check if topic exists
+if (!topic) {
+  return Astro.redirect('/404');
+}
+
+// Load manifest and get all articles for this topic
+const manifest = loadManifest();
+const articles = manifest.filter(item => item.topic === topic);
+
+// If no articles found, return 404
+if (articles.length === 0) {
+  return Astro.redirect('/404');
+}
+
+const breadcrumbs = [
+  { name: "Resources", href: "/" },
+  { name: topic.charAt(0).toUpperCase() + topic.slice(1), href: `/${topic}` }
+];
+---
+
+<ResourceList
+  topic={topic}
+  articles={articles}
+  breadcrumbs={breadcrumbs}
+/>

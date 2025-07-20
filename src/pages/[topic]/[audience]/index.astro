@@ -1,0 +1,58 @@
+---
+import ResourceList from "../../../components/ResourceList.astro";
+import { loadManifest, getMatchingArticles, slugify } from "../../../utils/manifest";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const manifest = loadManifest();
+  const paths: Array<{params: {topic: string, audience: string}}> = [];
+
+  // Generate all valid topic/audience combinations
+  const topicAudiencePairs = new Set<string>();
+
+  manifest.forEach(item => {
+    item.audience.forEach(aud => {
+      topicAudiencePairs.add(`${item.topic}/${aud}`);
+    });
+  });
+
+  topicAudiencePairs.forEach(pair => {
+    const [topic, audience] = pair.split('/');
+    paths.push({
+      params: { topic, audience }
+    });
+  });
+
+  return paths;
+};
+
+const { topic, audience } = Astro.params;
+
+// Load manifest and get matching articles
+const manifest = loadManifest();
+const articles = getMatchingArticles(manifest, topic!, audience!);
+
+// If only one article, redirect to it directly
+if (articles.length === 1) {
+  const articleSlug = slugify(articles[0].title);
+  return Astro.redirect(`/${topic}/${audience}/${articleSlug}`);
+}
+
+// If no articles found, return 404
+if (articles.length === 0) {
+  return Astro.redirect('/404');
+}
+
+const breadcrumbs = [
+  { name: "Resources", href: "/" },
+  { name: topic!.charAt(0).toUpperCase() + topic!.slice(1), href: `/${topic}` },
+  { name: audience!.charAt(0).toUpperCase() + audience!.slice(1), href: `/${topic}/${audience}`}
+];
+---
+
+<ResourceList
+  topic={topic!}
+  audience={audience!}
+  articles={articles}
+  breadcrumbs={breadcrumbs}
+/>

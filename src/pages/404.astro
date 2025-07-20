@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+---
+
+<Layout title="Page Not Found">
+  <div class="min-h-screen bg-white flex items-center justify-center">
+    <div class="max-w-md mx-auto px-4 text-center">
+      <!-- 404 Icon -->
+      <div class="w-32 h-32 bg-gradient-to-br from-teal-100 to-cyan-100 rounded-full flex items-center justify-center mx-auto mb-8">
+        <svg class="w-16 h-16 text-teal-600" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+
+      <!-- Error Message -->
+      <h1 class="text-4xl font-black text-gray-900 mb-4">Page Not Found</h1>
+      <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+        Sorry, we couldn't find the resource you're looking for. The page may have been moved or doesn't exist.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="space-y-4">
+        <a
+          href="/"
+          class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all transform hover:scale-105 inline-flex items-center justify-center gap-3"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+          </svg>
+          Find Resources from Home
+        </a>
+
+        <button
+          onclick="history.back()"
+          class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-8 rounded-lg transition-all inline-flex items-center justify-center gap-2"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+          </svg>
+          Go Back
+        </button>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+@media print {
+  .shadow-sm, .shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl {
+    box-shadow: none !important;
+  }
+
+  .bg-gradient-to-r, .bg-gradient-to-br {
+    background: #374151 !important;
+    color: white !important;
+  }
+}
+</style>

@@ -1,0 +1,292 @@
+---
+import { loadManifest, getAvailableTopics, getAvailableAudiences } from '../utils/manifest';
+const manifest = loadManifest();
+const availableTopics = getAvailableTopics(manifest);
+
+// Create topic configurations
+const topicConfigs = {
+  housing: {
+    tag: "housing",
+    title: "Housing",
+    description: "Emergency shelter, temporary housing, rental assistance, and permanent housing solutions.",
+    color: "teal",
+    icon: `<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>`
+  },
+  food: {
+    tag: "food",
+    title: "Food",
+    description: "Food banks, meal programs, SNAP benefits, and nutrition assistance for families.",
+    color: "green",
+    icon: `<path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>`
+  },
+  healthcare: {
+    tag: "healthcare",
+    title: "Healthcare",
+    description: "Medical care, mental health services, prescription assistance, and health insurance.",
+    color: "blue",
+    icon: `<path fill-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm3.5 6L10 10.5 6.5 8 10 5.5 13.5 8z"/>`
+  },
+  employment: {
+    tag: "employment",
+    title: "Jobs & Training",
+    description: "Job placement, skills training, resume help, and unemployment assistance.",
+    color: "purple",
+    icon: `<path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h2zm4-3a1 1 0 00-1 1v1h2V4a1 1 0 00-1-1z" clip-rule="evenodd"/>`
+  },
+  financial: {
+    tag: "financial",
+    title: "Financial Aid",
+    description: "Emergency funds, utility assistance, debt counseling, and financial planning.",
+    color: "orange",
+    icon: `<path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>`
+  },
+  other: {
+    tag: "other",
+    title: "Other Support",
+    description: "Transportation, legal aid, childcare, and other community services.",
+    color: "gray",
+    icon: `<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>`
+  }
+};
+
+// Filter available topics based on manifest
+const displayTopics = availableTopics.filter(topic => topicConfigs[topic]).map(topic => ({
+  key: topic,
+  ...topicConfigs[topic]
+}));
+
+// Get color classes
+function getColorClasses(color: string) {
+  const colorMap = {
+    teal: { bg: "bg-teal-100", bgHover: "bg-teal-500", text: "text-teal-600", textHover: "text-teal-600" },
+    green: { bg: "bg-green-100", bgHover: "bg-green-500", text: "text-green-600", textHover: "text-green-600" },
+    blue: { bg: "bg-blue-100", bgHover: "bg-blue-500", text: "text-blue-600", textHover: "text-blue-600" },
+    purple: { bg: "bg-purple-100", bgHover: "bg-purple-500", text: "text-purple-600", textHover: "text-purple-600" },
+    orange: { bg: "bg-orange-100", bgHover: "bg-orange-500", text: "text-orange-600", textHover: "text-orange-600" },
+    gray: { bg: "bg-gray-100", bgHover: "bg-gray-500", text: "text-gray-600", textHover: "text-gray-600" }
+  };
+  return colorMap[color] || colorMap.gray;
+}
+---
+<!-- Help Selection -->
+<section class="py-16 px-4" id="help-selection">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        What kind of help do you need?
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Select the type of assistance you're looking for and we'll connect you with the right resources.
+      </p>
+    </div>
+
+    {displayTopics.length === 0 ? (
+      <div class="text-center py-16">
+        <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">No Resources Available</h3>
+        <p class="text-gray-600">We're currently setting up our resource database. Please check back soon.</p>
+      </div>
+    ) : (
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {displayTopics.map((topic) => {
+          const colors = getColorClasses(topic.color);
+          console.log("HI")
+          console.log(colors)
+          return (
+            <button
+              data-type={topic.tag.toLowerCase()}
+              class={`help-type-btn bg-white border-2 border-gray-200 rounded-xl p-8 text-left hover:shadow-lg transition-all group`}
+            >
+              <div class="flex items-center gap-4 mb-4">
+                <div class={`w-16 h-16 bg-${colors.text} rounded-full flex items-center justify-center`}>
+                  <svg class={`w-8 h-8 ${colors.text} group-hover:${colors.textHover} transition-colors`} fill="currentColor" viewBox="0 0 20 20">
+                    <Fragment set:html={topic.icon} />
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">{topic.title}</h3>
+              </div>
+              <p class="text-gray-600 mb-4">{topic.description}</p>
+              <div class={`${colors.text} font-semibold flex items-center gap-2`}>
+                Get {topic.title} Help
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- Demographic Selection (Hidden by default) -->
+<section class="hidden py-16 px-4 bg-gray-50" id="demographic-selection">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <button class="back-btn inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-semibold mb-4">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+        </svg>
+        Back to Help Types
+      </button>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Which describes you best?
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        This helps us show you the most relevant resources and programs available to you.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto" id="audience-options">
+      <!-- Dynamic audience options will be inserted here -->
+    </div>
+
+    <div class="text-center mt-8">
+      <p class="text-gray-500">
+        Don't see your situation? <button data-type="other" class="text-teal-600 hover:text-teal-700 font-semibold underline">View all resources</button>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+<script define:vars={{ manifest, getAvailableAudiences }}>
+  let selectedHelpType = '';
+  let availableManifest = manifest;
+
+  // Add event listeners to help type buttons
+  document.querySelectorAll('.help-type-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const type = this.getAttribute('data-type');
+      console.log(type)
+      selectHelpType(type);
+    });
+  });
+
+  // Add event listeners to demographic buttons
+  document.querySelectorAll('.demographic-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const demographic = this.getAttribute('data-demographic');
+      findResources(selectedHelpType, demographic);
+    });
+  });
+
+  // Add event listener to back button
+  document.querySelectorAll('.back-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      goBack();
+    });
+  });
+
+  // Audience configurations
+  const audienceConfigs = {
+    veteran: {
+      title: "I'm a Veteran",
+      description: "Military service members and veterans",
+      icon: `<path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>`
+    },
+    senior: {
+      title: "I'm 65 or Older",
+      description: "Senior citizens and elderly community members",
+      icon: `<path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>`
+    },
+    other: {
+      title: "General Public",
+      description: "Individuals and families seeking assistance",
+      icon: `<path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>`
+    }
+  };
+
+  function selectHelpType(type) {
+    selectedHelpType = type;
+    console.log(selectedHelpType)
+    // Get available audiences for this topic
+    const availableAudiences = getAvailAudiences(availableManifest, type);
+
+    // Show audience selection
+    document.getElementById('help-selection').classList.add('hidden');
+    document.getElementById('demographic-selection').classList.remove('hidden');
+
+    // Populate audience options dynamically
+    const audienceContainer = document.getElementById('audience-options');
+    audienceContainer.innerHTML = '';
+
+    availableAudiences.forEach(audience => {
+      if (audienceConfigs[audience]) {
+        const config = audienceConfigs[audience];
+        const button = document.createElement('button');
+        button.onclick = () => findResources(audience);
+        button.className = 'demographic-btn bg-white border-2 border-gray-200 rounded-xl p-8 text-center hover:border-teal-500 hover:shadow-lg transition-all group';
+        button.innerHTML = `
+          <div class="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-colors">
+            <svg class="w-10 h-10 text-teal-600 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 20 20">
+              ${config.icon}
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">${config.title}</h3>
+          <p class="text-gray-600">${config.description}</p>
+        `;
+        audienceContainer.appendChild(button);
+      }
+    });
+
+    // Smooth scroll to demographic section
+    document.getElementById('demographic-selection').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+
+  function goBack() {
+    document.getElementById('demographic-selection').classList.add('hidden');
+    document.getElementById('help-selection').classList.remove('hidden');
+
+    // Smooth scroll back to help selection
+    document.getElementById('help-selection').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+
+  function findResources(audience) {
+    // Show loading state
+    document.getElementById('loading').classList.remove('hidden');
+
+    // Simulate loading time
+    setTimeout(() => {
+      // Navigate to the resource page
+      window.location.href = `/${selectedHelpType}/${audience}`;
+    }, 1000);
+  }
+
+  // Helper function to get available audiences (clientside version)
+  function getAvailAudiences(manifest, topic) {
+    const audiences = new Set();
+    manifest
+      .filter(item => item.topic === topic)
+      .forEach(item => {
+        item.audience.forEach(aud => audiences.add(aud));
+      });
+    return Array.from(audiences);
+  }
+
+  // Add keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const loading = document.getElementById('loading');
+      if (!loading.classList.contains('hidden')) {
+        loading.classList.add('hidden');
+      }
+    }
+  });
+</script>
+
+<style>
+  button:hover {
+    cursor: pointer;
+  }
+</style>

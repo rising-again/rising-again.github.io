@@ -1,0 +1,195 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  showBreadcrumbs?: boolean;
+  breadcrumbs?: Array<{name: string, href: string}>;
+}
+
+const {
+  title,
+  description = "Community resources for housing, food, and support services",
+  showBreadcrumbs = false,
+  breadcrumbs = []
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d9488" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Rising Again</title>
+  </head>
+  <body class="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-teal-600 text-white px-4 py-2 rounded z-50">
+      Skip to main content
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+      <!-- Top utility bar -->
+      <div class="bg-gray-800 text-white py-2">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
+          <div class="hidden md:flex gap-4">
+            <button id="font-small" class="hover:text-teal-300 transition-colors">A-</button>
+            <button id="font-normal" class="hover:text-teal-300 transition-colors">A</button>
+            <button id="font-large" class="hover:text-teal-300 transition-colors">A+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main navigation -->
+      <nav class="bg-teal-600 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex justify-between items-center py-4">
+            <!-- Logo/Brand -->
+            <div class="flex items-center gap-3">
+                <!-- TODO: Add logo here -->
+              <div>
+                <a href="/" class="text-2xl font-bold text-white hover:text-teal-100 transition-colors">
+                  Rising Again
+                </a>
+                <div class="text-xs text-teal-100 hidden sm:block">Community Resources & Support</div>
+              </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-6">
+              <a href="/" class="text-white hover:text-teal-100 transition-colors font-medium">Home</a>
+              <a href="/about" class="text-white hover:text-teal-100 transition-colors font-medium">About</a>
+              <a href="/contact" class="text-white hover:text-teal-100 transition-colors font-medium">Contact</a>
+              <a href="/search" class="bg-white text-teal-600 px-4 py-2 rounded font-semibold hover:bg-teal-50 transition-colors">
+                Search Resources
+              </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white hover:text-teal-100 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile menu -->
+          <div id="mobile-menu" class="hidden md:hidden bg-teal-700 border-t border-teal-500">
+            <div class="px-4 py-3 space-y-2">
+              <a href="/" class="block text-white hover:text-teal-100 transition-colors py-2 font-medium">Home</a>
+              <a href="/about" class="block text-white hover:text-teal-100 transition-colors py-2 font-medium">About</a>
+              <a href="/contact" class="block text-white hover:text-teal-100 transition-colors py-2 font-medium">Contact</a>
+              <a href="/search" class="block bg-white text-teal-600 px-4 py-2 rounded font-semibold hover:bg-teal-50 transition-colors mt-2">
+                Search Resources
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Breadcrumbs -->
+      {showBreadcrumbs && breadcrumbs.length > 0 && (
+        <div class="bg-gray-100 border-b border-gray-200">
+          <div class="max-w-7xl mx-auto px-4 py-3">
+            <nav class="flex" aria-label="Breadcrumb">
+              <ol class="flex items-center space-x-2 text-sm text-gray-600">
+                <li>
+                  <a href="/" class="hover:text-teal-600 transition-colors">Home</a>
+                </li>
+                {breadcrumbs.map((crumb, index) => (
+                  <li class="flex items-center">
+                    <svg class="w-4 h-4 mx-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    {index === breadcrumbs.length - 1 ? (
+                      <span class="text-gray-900 font-medium">{crumb.name}</span>
+                    ) : (
+                      <a href={crumb.href} class="hover:text-teal-600 transition-colors">{crumb.name}</a>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
+        </div>
+      )}
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-4 gap-8">
+          <!-- Brand -->
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-3 mb-4">
+                <!-- TODO: Add logo here -->
+              <div>
+                <h3 class="text-xl font-bold">Rising Again</h3>
+                <p class="text-gray-400 text-sm">Hope rises from truth</p>
+              </div>
+            </div>
+            <p class="text-gray-400 mb-4">
+              Connecting our community with essential resources for housing, food, healthcare, and support services.
+              Serving veterans, elderly, and families in need.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="/housing" class="hover:text-white transition-colors">Housing Resources</a></li>
+              <li><a href="/food" class="hover:text-white transition-colors">Food Assistance</a></li>
+              <li><a href="/healthcare" class="hover:text-white transition-colors">Healthcare</a></li>
+              <li><a href="/veterans" class="hover:text-white transition-colors">Veteran Services</a></li>
+              <li><a href="/senior" class="hover:text-white transition-colors">Senior Support</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+          <div>
+            <p>&copy; {new Date().getFullYear()} Rising-Again. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-btn')?.addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu?.classList.toggle('hidden');
+      });
+
+      // Font size controls
+      function setFontSize(size: string) {
+        const body = document.body;
+        body.classList.remove('text-sm', 'text-base', 'text-lg');
+
+        switch(size) {
+          case 'small':
+            body.classList.add('text-sm');
+            break;
+          case 'large':
+            body.classList.add('text-lg');
+            break;
+          default:
+            body.classList.add('text-base');
+        }
+      }
+
+      document.getElementById('font-small')?.addEventListener('click', () => setFontSize('small'));
+      document.getElementById('font-normal')?.addEventListener('click', () => setFontSize('normal'));
+      document.getElementById('font-large')?.addEventListener('click', () => setFontSize('large'));
+    </script>
+  </body>
+</html>

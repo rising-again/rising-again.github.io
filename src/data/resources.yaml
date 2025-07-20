@@ -1,0 +1,30 @@
+housing:
+  - title: "Emergency Housing Assistance"
+    description: "Immediate help for those facing homelessness"
+    contact: "Call 211 or visit City Hall"
+    eligibility: "Income requirements apply"
+
+  - title: "Veteran Housing Program"
+    description: "Specialized housing support for veterans"
+    contact: "VA Office: (555) 123-4567"
+    eligibility: "Military service required"
+
+food:
+  - title: "Community Food Bank"
+    description: "Free groceries for families in need"
+    location: "123 Main Street"
+    hours: "Mon-Fri 9AM-5PM"
+
+  - title: "Senior Meal Program"
+    description: "Daily meals for seniors 60+"
+    location: "Senior Center"
+    hours: "Lunch served 11:30AM-1PM"
+
+myths:
+  - myth: "You need perfect credit for housing assistance"
+    truth: "Many programs have flexible requirements"
+    category: "housing"
+
+  - myth: "Food banks are only for homeless people"
+    truth: "Anyone facing food insecurity can get help"
+    category: "food"

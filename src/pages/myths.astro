@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import "../styles/global.css"
+
+
+const myths = [
+  {
+    myth: "You need perfect credit for housing assistance",
+    truth: "Many programs have flexible requirements",
+    category: "housing"
+  },
+  {
+    myth: "Food banks are only for homeless people",
+    truth: "Anyone facing food insecurity can get help",
+    category: "food"
+  }
+];
+---
+
+<Layout title="Truth vs Myths - Get the Facts">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">
+        <span class="text-dragon-primary">🐉 Myths</span> vs <span class="text-phoenix-primary">🔥 Truth</span>
+      </h1>
+      <p class="text-xl text-gray-600">
+        Separating fact from fiction about community resources
+      </p>
+    </div>
+
+    <div class="space-y-8">
+      {myths.map(item => (
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="grid md:grid-cols-2">
+            <!-- Myth Side -->
+            <div class="bg-gradient-to-r from-dragon-primary to-red-600 text-white p-8">
+              <div class="flex items-center mb-4">
+                <span class="text-3xl mr-3">🐉</span>
+                <h3 class="text-xl font-bold">MYTH</h3>
+              </div>
+              <p class="text-lg">"{item.myth}"</p>
+            </div>
+
+            <!-- Truth Side -->
+            <div class="bg-gradient-to-r from-phoenix-primary to-phoenix-secondary text-white p-8">
+              <div class="flex items-center mb-4">
+                <span class="text-3xl mr-3">🔥</span>
+                <h3 class="text-xl font-bold">TRUTH</h3>
+              </div>
+              <p class="text-lg">{item.truth}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

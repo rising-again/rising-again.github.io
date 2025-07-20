@@ -1,0 +1,63 @@
+---
+// src/pages/[topic]/[audience]/[title].astro
+import Resource from "../../../components/Resource.astro";
+import { loadManifest, getSpecificArticle, readArticleContent } from "../../../utils/manifest";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const manifest = loadManifest();
+  const paths: Array<{params: {topic: string, audience: string, title: string}}> = [];
+
+  manifest.forEach(item => {
+    item.audience.forEach(aud => {
+      // Convert title to slug for URL
+      const titleSlug = item.title
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim();
+
+      paths.push({
+        params: {
+          topic: item.topic,
+          audience: aud,
+          title: titleSlug
+        }
+      });
+    });
+  });
+
+  return paths;
+};
+
+const { topic, audience, title } = Astro.params;
+
+// Load manifest and get specific article
+const manifest = loadManifest();
+const article = getSpecificArticle(manifest, topic!, audience!, title!);
+
+// If article not found, return 404
+if (!article) {
+  return Astro.redirect('/404');
+}
+
+// Read article content
+let articleContent = '';
+if (article.article) {
+  articleContent = readArticleContent(article.article);
+}
+
+const breadcrumbs = [
+  { name: "Resources", href: "/" },
+  { name: topic!.charAt(0).toUpperCase() + topic!.slice(1), href: `/${topic}` },
+  { name: audience!.charAt(0).toUpperCase() + audience!.slice(1), href: `/${topic}/${audience}` },
+  { name: article.title, href: `/${topic}/${audience}/${title}` }
+];
+---
+
+<Resource
+  resourceData={article}
+  articleContent={articleContent}
+  breadcrumbs={breadcrumbs}
+/>
