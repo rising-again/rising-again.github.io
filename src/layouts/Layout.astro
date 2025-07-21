@@ -149,8 +149,6 @@ const {
               <li><a href="/housing" class="hover:text-white transition-colors">Housing Resources</a></li>
               <li><a href="/food" class="hover:text-white transition-colors">Food Assistance</a></li>
               <li><a href="/healthcare" class="hover:text-white transition-colors">Healthcare</a></li>
-              <li><a href="/veterans" class="hover:text-white transition-colors">Veteran Services</a></li>
-              <li><a href="/senior" class="hover:text-white transition-colors">Senior Support</a></li>
             </ul>
           </div>
         </div>
@@ -173,14 +171,14 @@ const {
       // Font size controls
       function setFontSize(size: string) {
         const body = document.body;
-        body.classList.remove('text-sm', 'text-base', 'text-lg');
+        body.classList.remove('text-sm', 'text-base', 'text-xl');
 
         switch(size) {
           case 'small':
             body.classList.add('text-sm');
             break;
           case 'large':
-            body.classList.add('text-lg');
+            body.classList.add('text-xl');
             break;
           default:
             body.classList.add('text-base');
