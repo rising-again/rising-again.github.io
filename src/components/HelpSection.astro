@@ -257,7 +257,9 @@ function getColorClasses(color: string) {
     document.getElementById('loading').classList.remove('hidden');
 
     // Navigate to the resource page
+    setTimeout(() => {
     window.location.href = `/${selectedHelpType}/${audience}`;
+  }, 200);
   }
 
   // Helper function to get available audiences (clientside version)
