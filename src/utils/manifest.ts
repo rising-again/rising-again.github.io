@@ -78,6 +78,7 @@ export function loadManifest(): ManifestItem[] {
 export function readArticleContent(articlePath: string): string {
   try {
     const fullPath = path.join(process.cwd(), articlePath);
+    console.log(fs.readFileSync(fullPath, 'utf-8'))
     return fs.readFileSync(fullPath, 'utf-8');
   } catch (error) {
     console.error(`Error reading article from ${articlePath}:`, error);
