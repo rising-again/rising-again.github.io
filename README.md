@@ -14,7 +14,7 @@ Go to the following file (src/data/manifest.json)
 ### How to edit the file
 The format for the data inside of the file is very important (the indents don't matter but the punctuation and symbols is important).
 
-All information is contained with brackets (`[ ]`). Each distinct entry is contained within brackes (`{ }`) and separated by commas (`,`).
+All information is contained with brackets (`[ ]`). Each distinct entry is contained within braces (`{ }`) and separated by commas (`,`).
 Within the braces, we add relevant information.
 
 Here is an example of an empty file:
