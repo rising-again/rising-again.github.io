@@ -23,7 +23,7 @@ Here is an example of an empty file:
   {
     "title":"",
     "description":"",
-    "topic": "housing",
+    "topic": "",
     "contact": {
       "phone": "",
       "email": "",
