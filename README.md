@@ -1,5 +1,7 @@
 ## Instructions on how to add data
-
+- [File Locations](#where-editing-files-are-located)
+- [Adding Information](#how-to-edit-the-file)
+- [Adding Articles](#adding-articles)
 
 ### Where editing files are located
 Go to the following file (src/data/manifest.json)
