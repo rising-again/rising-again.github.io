@@ -1,12 +1,13 @@
 ## Instructions on how to add data
 
 
-### Where editing file is located
+### Where editing files are located
 Go to the following file (src/data/manifest.json)
 
 <img width="1834" height="990" alt="image" src="https://github.com/user-attachments/assets/b52057fe-dcd6-4a04-b07c-d3e1356415fa" />
 <img width="3166" height="760" alt="image" src="https://github.com/user-attachments/assets/e049ad78-4f06-4456-be73-b206c563e20e" />
-<img width="3162" height="350" alt="image" src="https://github.com/user-attachments/assets/0c1e9e64-6dcd-4e15-908f-cf422ac92895" />
+<img width="1580" height="178" alt="Screenshot 2025-07-30 at 10 18 38 PM" src="https://github.com/user-attachments/assets/845f8b78-1c54-4e58-8e66-600d9200c97c" />
+
 
 ### How to edit the file
 The format for the data inside of the file is very important (the indents don't matter but the punctuation and symbols is important).
@@ -40,7 +41,7 @@ Here is what each field within the braces represents (all text items must be pla
 - `"contact"`: Braces supporting with fields for multiple contact options.
 - `"truths"`: Brackets containing a comma separated list of truths about the specific service in question.
 - `"myths"`: Brackets containing a comma separated list of myths about the specific service in question.
-- `"article"`: Text pointing to the specific path with detailed information about the service. The article should be placed within the following folder `src/data/resources/` (more info below).
+- `"article"`: Text pointing to the specific path with detailed information about the service. The article should be placed within the following folder `src/data/articles/` (more info below).
 
 Note that comma at the end of each field is very important.
 
@@ -67,7 +68,7 @@ Here is a file with some valid sample data:
       "VA housing loans are only available for first-time homebuyers",
       "Housing vouchers expire after one year and cannot be renewed"
     ],
-    "article": "src/data/resources/veterans_housing_guide.txt"
+    "article": "src/data/articles/veterans_housing_guide.txt"
   },
   {
     "title": "Emergency Food Bank Network",
@@ -89,10 +90,24 @@ Here is a file with some valid sample data:
       "Food banks are only for homeless people",
       "SNAP benefits can only be used for basic groceries"
     ],
-    "article": "src/data/resources/food_assistance_guide.txt"
+    "article": "src/data/articles/food_assistance_guide.txt"
   }
 ]
 ```
 
 ### Adding Articles
-To add articles, got the folder where the `manifest.json` file is located (see above) and select the resources
+To add articles, got the folder where the `manifest.json` file is located (see above) and select the `articles` folder. 
+
+From there, create a new file:
+<img width="3184" height="512" alt="image" src="https://github.com/user-attachments/assets/6b7aabcb-c651-41a0-9daf-80f30074d358" />
+
+Give your file a name and then add any information you want to the file.
+
+Then save the file:
+<img width="3178" height="238" alt="image" src="https://github.com/user-attachments/assets/4d06a0c1-798c-45a1-b32c-75f8d699f690" />
+
+
+<img width="1106" height="1038" alt="image" src="https://github.com/user-attachments/assets/5902f1cc-a257-4aa9-bb3a-6dfb124eee36" />
+
+
+To make the contents of the file visible on the website, go to edit the `"article"` section for your specific topic with the following `"src/data/articles/<your_file_name>"` (replace `<your_file_name>` with the name of the file you just created)
