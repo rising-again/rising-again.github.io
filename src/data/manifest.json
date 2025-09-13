@@ -9,9 +9,9 @@
       "email": "",
       "location": ""
     },
-    "truths": ["myth1", "myth2"],
-    "myths": ["truth1", "truth2"],
-    "article": "src/data/articles/test_article"
+    "truths": [],
+    "myths": [],
+    "article": ""
   },
   {
     "title": "The American Legion",
