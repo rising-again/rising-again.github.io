@@ -9,9 +9,9 @@
       "email": "",
       "location": ""
     },
-    "truths": [],
-    "myths": [],
-    "article": ""
+    "truths": ["myth1", "myth2"],
+    "myths": ["truth1", "truth2"],
+    "article": "src/data/articles/test_article"
   },
   {
     "title": "The American Legion",
@@ -21,6 +21,20 @@
     "contact": {
       "phone": "1-800-433-3318",
       "email": "",
+      "location": ""
+    },
+    "truths": [],
+    "myths": [],
+    "article": ""
+  },
+  {
+    "title": "Lady's Veterans Connect",
+    "description": "Provides helpful information.",
+    "audience": ["veteran"],
+    "topic": "housing",
+    "contact": {
+      "phone": "1-859-806-4297",
+      "email": "info@ladyveternsconnect.org",
       "location": ""
     },
     "truths": [],

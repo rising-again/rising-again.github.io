@@ -31,7 +31,7 @@ import "../styles/global.css";
           Find Resources from Home
         </a>
 
-        <button
+        <a
           onclick="history.back()"
           class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-8 rounded-lg transition-all inline-flex items-center justify-center gap-2"
         >
@@ -39,13 +39,16 @@ import "../styles/global.css";
             <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
           </svg>
           Go Back
-        </button>
+        </a>
       </div>
     </div>
   </div>
 </Layout>
 
 <style>
+a{
+    cursor: pointer;
+}
 @media print {
   .shadow-sm, .shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl {
     box-shadow: none !important;
