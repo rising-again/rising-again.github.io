@@ -36,7 +36,6 @@ jobs:
 
       - name: Reinstall Sharp for Linux
         run: |
-          pnpm remove sharp
           pnpm add sharp
 
       - name: Build site
