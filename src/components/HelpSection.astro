@@ -1,8 +1,7 @@
 ---
 import { loadManifest, getAvailableTopics, getAvailableAudiences } from '../utils/manifest';
 import { Image } from 'astro:assets';
-// import logo  from '../assets/logo_COLOR.svg';
-import logo  from '../assets/logo_COLOR_colorLayer.svg';
+import logo  from '../assets/logo_color.svg';
 const manifest = loadManifest();
 const availableTopics = getAvailableTopics(manifest);
 
@@ -87,7 +86,7 @@ function getColorClasses(color: string) {
   <div class="flex items-center">
     <div>
       <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-        Find Help to Rise Again
+        Find Your Path to Rising Again
       </h1>
       <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-10">
         Dedicated to connecting Veterans, Seniors, and families across Kentucky with the resources they need for housing, food, healthcare, and more.
