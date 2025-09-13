@@ -1,7 +1,6 @@
 ---
 // src/pages/[topic]/[audience]/[title].astro
 import Resource from "../../../components/Resource.astro";
-import ResourceTest from "../../../components/ResourceTest.astro";
 import { loadManifest, getSpecificArticle, readArticleContent } from "../../../utils/manifest";
 import type { GetStaticPaths } from "astro";
 
@@ -57,12 +56,7 @@ const breadcrumbs = [
 ];
 ---
 
-<!-- <Resource
-  resourceData={article}
-  articleContent={articleContent}
-  breadcrumbs={breadcrumbs}
-/> -->
-<ResourceTest
+<Resource
   resourceData={article}
   articleContent={articleContent}
   breadcrumbs={breadcrumbs}
